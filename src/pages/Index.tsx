@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Search, MapPin, Star, Clock, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -87,6 +86,15 @@ const Index = () => {
         <div className="absolute inset-0 salon-gradient opacity-90"></div>
         <div className="relative container mx-auto px-4 py-24">
           <div className="text-center text-white max-w-4xl mx-auto">
+            {/* Logo */}
+            <div className="mb-8">
+              <img 
+                src="/lovable-uploads/4e0d8107-3bf4-4830-b6e3-01e730524ed1.png" 
+                alt="Txassen Logo" 
+                className="h-24 mx-auto mb-4"
+              />
+            </div>
+            
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Find Your Perfect
               <span className="block text-salon-gold">Hair Salon</span>
