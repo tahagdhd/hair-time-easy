@@ -16,9 +16,10 @@ const SearchFilters = () => {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const filterOptions = {
-    services: ["Coupe", "Coloration", "Mèches", "Extensions", "Soins", "Coiffage"],
-    priceRange: ["$", "$$", "$$$", "$$$$"],
+    services: ["Coupe", "Henné", "Argan", "Mariée", "Homme", "Coloration"],
+    priceRange: ["50-100 MAD", "100-200 MAD", "200-300 MAD", "300+ MAD"],
     rating: ["4+ Étoiles", "4,5+ Étoiles", "5 Étoiles"],
+    location: ["Rabat", "Casablanca", "Marrakech", "Fès", "Tanger"],
     availability: ["Disponible Aujourd'hui", "Disponible Cette Semaine", "Disponible À Tout Moment"]
   };
 
@@ -65,7 +66,7 @@ const SearchFilters = () => {
             <ChevronDown className="h-4 w-4 ml-2" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-64 bg-white border shadow-lg">
+        <DropdownMenuContent className="w-64 bg-white border shadow-lg z-50">
           <DropdownMenuLabel>Filtrer les Salons</DropdownMenuLabel>
           <DropdownMenuSeparator />
           
@@ -90,7 +91,7 @@ const SearchFilters = () => {
           <DropdownMenuSeparator />
           
           <DropdownMenuLabel className="text-xs text-muted-foreground uppercase tracking-wide">
-            Gamme de Prix
+            Gamme de Prix (MAD)
           </DropdownMenuLabel>
           {filterOptions.priceRange.map((price) => (
             <DropdownMenuItem
@@ -101,6 +102,26 @@ const SearchFilters = () => {
               <div className="flex items-center justify-between w-full">
                 <span>{price}</span>
                 {activeFilters.includes(price) && (
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                )}
+              </div>
+            </DropdownMenuItem>
+          ))}
+          
+          <DropdownMenuSeparator />
+          
+          <DropdownMenuLabel className="text-xs text-muted-foreground uppercase tracking-wide">
+            Villes
+          </DropdownMenuLabel>
+          {filterOptions.location.map((location) => (
+            <DropdownMenuItem
+              key={location}
+              className="cursor-pointer"
+              onClick={() => toggleFilter(location)}
+            >
+              <div className="flex items-center justify-between w-full">
+                <span>{location}</span>
+                {activeFilters.includes(location) && (
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                 )}
               </div>

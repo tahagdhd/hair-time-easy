@@ -44,15 +44,16 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
   ];
 
   const services = [
-    { name: "Coupe", duration: "60 min", price: "45€" },
-    { name: "Coloration", duration: "120 min", price: "85€" },
-    { name: "Mèches", duration: "180 min", price: "120€" },
-    { name: "Brushing", duration: "45 min", price: "35€" },
-    { name: "Soin", duration: "90 min", price: "65€" }
+    { name: "Coupe Classique", duration: "60 min", price: "80 MAD" },
+    { name: "Henné Traditionnel", duration: "120 min", price: "150 MAD" },
+    { name: "Soins à l'Argan", duration: "90 min", price: "200 MAD" },
+    { name: "Coiffure Mariée", duration: "180 min", price: "500 MAD" },
+    { name: "Coloration", duration: "120 min", price: "250 MAD" },
+    { name: "Coupe Homme", duration: "45 min", price: "60 MAD" }
   ];
 
   const handleBooking = () => {
-    if (!selectedDate || !selectedTime || !selectedService || !customerName || !customerEmail) {
+    if (!selectedDate || !selectedTime || !selectedService || !customerName || !customerPhone) {
       toast({
         title: "Informations Manquantes",
         description: "Veuillez remplir tous les champs obligatoires.",
@@ -63,7 +64,7 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
 
     toast({
       title: "Réservation Confirmée !",
-      description: `Votre rendez-vous chez ${salon?.name} a été réservé pour le ${selectedDate} à ${selectedTime}.`,
+      description: `Votre rendez-vous chez ${salon?.name} a été réservé pour le ${selectedDate} à ${selectedTime}. Confirmation envoyée par SMS.`,
     });
 
     // Reset form
@@ -91,7 +92,7 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
 
         <div className="grid gap-6">
           {/* Informations du Salon */}
-          <Card>
+          <Card className="border-moroccan-warm">
             <CardHeader className="pb-4">
               <CardTitle className="text-lg">{salon.name}</CardTitle>
             </CardHeader>
@@ -111,7 +112,7 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
               {services.map((service) => (
                 <Card
                   key={service.name}
-                  className={`cursor-pointer transition-all ${
+                  className={`cursor-pointer transition-all border-moroccan-warm ${
                     selectedService === service.name
                       ? "ring-2 ring-primary bg-primary/5"
                       : "hover:shadow-md"
@@ -124,7 +125,7 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
                         <h4 className="font-medium">{service.name}</h4>
                         <p className="text-sm text-muted-foreground">{service.duration}</p>
                       </div>
-                      <Badge variant="outline">{service.price}</Badge>
+                      <Badge variant="outline" className="border-moroccan-brown">{service.price}</Badge>
                     </div>
                   </CardContent>
                 </Card>
@@ -142,15 +143,16 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
                 min={new Date().toISOString().split('T')[0]}
+                className="border-moroccan-warm"
               />
             </div>
             <div className="space-y-2">
               <Label>Heure</Label>
               <Select value={selectedTime} onValueChange={setSelectedTime}>
-                <SelectTrigger>
+                <SelectTrigger className="border-moroccan-warm">
                   <SelectValue placeholder="Sélectionner une heure" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-white z-50">
                   {availableTimes.map((time) => (
                     <SelectItem key={time} value={time}>
                       {time}
@@ -172,27 +174,30 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="Entrez votre nom complet"
+                  className="border-moroccan-warm"
                 />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={customerEmail}
-                    onChange={(e) => setCustomerEmail(e.target.value)}
-                    placeholder="votre.email@exemple.com"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Numéro de Téléphone</Label>
+                  <Label htmlFor="phone">Numéro de Téléphone *</Label>
                   <Input
                     id="phone"
                     type="tel"
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
                     placeholder="06 12 34 56 78"
+                    className="border-moroccan-warm"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email (optionnel)</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={customerEmail}
+                    onChange={(e) => setCustomerEmail(e.target.value)}
+                    placeholder="votre.email@exemple.com"
+                    className="border-moroccan-warm"
                   />
                 </div>
               </div>
@@ -201,7 +206,7 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
 
           {/* Résumé de la Réservation */}
           {selectedService && selectedDate && selectedTime && (
-            <Card className="bg-salon-cream border-primary/20">
+            <Card className="bg-moroccan-cream border-primary/20">
               <CardHeader>
                 <CardTitle className="text-lg">Résumé de la Réservation</CardTitle>
               </CardHeader>
@@ -222,18 +227,24 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
                   <span>Salon :</span>
                   <span className="font-medium">{salon.name}</span>
                 </div>
+                <div className="flex justify-between font-semibold text-lg">
+                  <span>Prix :</span>
+                  <span className="text-primary">
+                    {services.find(s => s.name === selectedService)?.price}
+                  </span>
+                </div>
               </CardContent>
             </Card>
           )}
 
           {/* Boutons d'Action */}
           <div className="flex space-x-3">
-            <Button variant="outline" onClick={onClose} className="flex-1">
+            <Button variant="outline" onClick={onClose} className="flex-1 border-moroccan-brown">
               Annuler
             </Button>
             <Button 
               onClick={handleBooking} 
-              className="flex-1 salon-gradient text-white hover:opacity-90"
+              className="flex-1 moroccan-gradient text-white hover:opacity-90"
             >
               Confirmer la Réservation
             </Button>

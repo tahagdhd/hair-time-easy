@@ -3,74 +3,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hair salon booking platform design system */
+/* Thassen - Moroccan hair salon booking platform design system */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 30 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 30 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 30 20% 15%;
 
-    --primary: 340 82% 52%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 30 25% 25%;
+    --primary-foreground: 35 15% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 15% 90%;
+    --secondary-foreground: 30 20% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 15% 90%;
+    --muted-foreground: 30 12% 45%;
 
-    --accent: 45 93% 70%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 40% 60%;
+    --accent-foreground: 30 20% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 340 82% 52%;
+    --border: 35 20% 85%;
+    --input: 35 20% 85%;
+    --ring: 30 25% 25%;
 
     --radius: 0.75rem;
 
-    --salon-pink: 340 82% 52%;
-    --salon-gold: 45 93% 70%;
-    --salon-cream: 35 20% 96%;
-    --salon-warm: 25 25% 90%;
+    --moroccan-brown: 30 25% 25%;
+    --moroccan-gold: 35 40% 60%;
+    --moroccan-cream: 35 15% 95%;
+    --moroccan-warm: 30 20% 90%;
+    --moroccan-dark: 25 30% 20%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 25 30% 10%;
+    --foreground: 35 15% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 25 30% 15%;
+    --card-foreground: 35 15% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 25 30% 15%;
+    --popover-foreground: 35 15% 95%;
 
-    --primary: 340 82% 52%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 35 40% 60%;
+    --primary-foreground: 25 30% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 30 20% 20%;
+    --secondary-foreground: 35 15% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 30 20% 20%;
+    --muted-foreground: 35 15% 70%;
 
-    --accent: 45 93% 70%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 40% 60%;
+    --accent-foreground: 25 30% 10%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 340 82% 52%;
+    --border: 30 20% 25%;
+    --input: 30 20% 25%;
+    --ring: 35 40% 60%;
   }
 }
 
@@ -86,11 +87,15 @@
 }
 
 @layer utilities {
-  .salon-gradient {
-    background: linear-gradient(135deg, hsl(var(--salon-pink)) 0%, hsl(var(--salon-gold)) 100%);
+  .moroccan-gradient {
+    background: linear-gradient(135deg, hsl(var(--moroccan-brown)) 0%, hsl(var(--moroccan-gold)) 100%);
   }
   
   .warm-gradient {
-    background: linear-gradient(135deg, hsl(var(--salon-cream)) 0%, hsl(var(--salon-warm)) 100%);
+    background: linear-gradient(135deg, hsl(var(--moroccan-cream)) 0%, hsl(var(--moroccan-warm)) 100%);
+  }
+
+  .dark-gradient {
+    background: linear-gradient(135deg, hsl(var(--moroccan-dark)) 0%, hsl(var(--moroccan-brown)) 100%);
   }
 }

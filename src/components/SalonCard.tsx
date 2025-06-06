@@ -22,7 +22,7 @@ interface SalonCardProps {
 
 const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
   return (
-    <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+    <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden border-moroccan-warm">
       <div className="relative h-48 overflow-hidden">
         <img
           src={salon.image}
@@ -54,7 +54,7 @@ const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
             </CardDescription>
           </div>
           <div className="flex items-center space-x-1 text-sm">
-            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+            <Star className="h-4 w-4 fill-moroccan-gold text-moroccan-gold" />
             <span className="font-semibold">{salon.rating}</span>
             <span className="text-muted-foreground">({salon.reviewCount})</span>
           </div>
@@ -64,7 +64,7 @@ const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
       <CardContent className="pt-0">
         <div className="flex flex-wrap gap-2 mb-4">
           {salon.services.map((service) => (
-            <Badge key={service} variant="outline" className="text-xs">
+            <Badge key={service} variant="outline" className="text-xs border-moroccan-brown">
               {service}
             </Badge>
           ))}
@@ -72,7 +72,7 @@ const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
         
         <Button 
           onClick={onBookNow}
-          className="w-full salon-gradient text-white hover:opacity-90 transition-opacity"
+          className="w-full moroccan-gradient text-white hover:opacity-90 transition-opacity"
         >
           Réserver Maintenant
         </Button>
