@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { Search, MapPin, Star, Clock, Calendar } from "lucide-react";
+import { Search, MapPin, Star, Clock, Calendar, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -82,18 +81,39 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-moroccan-cream to-moroccan-warm">
+      {/* Header avec Logo */}
+      <header className="bg-white shadow-sm border-b border-moroccan-border">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              {/* Logo Placeholder */}
+              <div className="logo-placeholder w-12 h-12 rounded-lg flex items-center justify-center">
+                <span className="text-xs text-muted-foreground font-medium">LOGO</span>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-primary">Thassen</h1>
+                <p className="text-sm text-muted-foreground">Réservation de salons au Maroc</p>
+              </div>
+            </div>
+            <Button variant="outline" size="icon" className="md:hidden">
+              <Menu className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </header>
+
       {/* Section Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 moroccan-gradient opacity-90"></div>
-        <div className="relative container mx-auto px-4 py-24">
+        <div className="absolute inset-0 moroccan-gradient opacity-95"></div>
+        <div className="relative container mx-auto px-4 py-20">
           <div className="text-center text-white max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="block text-moroccan-gold">Thassen</span>
-              Plateforme de Réservation
-              <span className="block">Salons de Coiffure au Maroc</span>
-            </h1>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <span className="block text-accent">Réservez Facilement</span>
+              Vos Rendez-vous Beauté
+              <span className="block">Partout au Maroc</span>
+            </h2>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Réservez facilement vos rendez-vous chez les meilleurs coiffeurs du Maroc
+              Découvrez les meilleurs salons de coiffure et centres de beauté marocains
             </p>
             
             {/* Barre de Recherche */}
@@ -102,7 +122,7 @@ const Index = () => {
                 <div className="relative flex-1">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 h-5 w-5" />
                   <Input
-                    placeholder="Rechercher par service, salon, ou ville..."
+                    placeholder="Henné, coupe, coloration, soins argan..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-12 bg-white/20 border-white/30 text-white placeholder:text-white/70 h-12 rounded-xl"

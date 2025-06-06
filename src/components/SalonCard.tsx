@@ -22,7 +22,7 @@ interface SalonCardProps {
 
 const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
   return (
-    <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden border-moroccan-warm">
+    <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden border-moroccan-border">
       <div className="relative h-48 overflow-hidden">
         <img
           src={salon.image}
@@ -54,7 +54,7 @@ const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
             </CardDescription>
           </div>
           <div className="flex items-center space-x-1 text-sm">
-            <Star className="h-4 w-4 fill-moroccan-gold text-moroccan-gold" />
+            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
             <span className="font-semibold">{salon.rating}</span>
             <span className="text-muted-foreground">({salon.reviewCount})</span>
           </div>
@@ -64,7 +64,7 @@ const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
       <CardContent className="pt-0">
         <div className="flex flex-wrap gap-2 mb-4">
           {salon.services.map((service) => (
-            <Badge key={service} variant="outline" className="text-xs border-moroccan-brown">
+            <Badge key={service} variant="outline" className="text-xs border-primary">
               {service}
             </Badge>
           ))}
