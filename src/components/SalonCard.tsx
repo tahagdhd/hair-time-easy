@@ -74,7 +74,7 @@ const SalonCard = ({ salon, onBookNow }: SalonCardProps) => {
           onClick={onBookNow}
           className="w-full salon-gradient text-white hover:opacity-90 transition-opacity"
         >
-          Book Now
+          Réserver Maintenant
         </Button>
       </CardContent>
     </Card>

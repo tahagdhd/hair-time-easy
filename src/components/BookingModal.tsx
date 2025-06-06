@@ -38,32 +38,32 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
   const { toast } = useToast();
 
   const availableTimes = [
-    "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
-    "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM",
-    "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"
+    "9h00", "9h30", "10h00", "10h30", "11h00", "11h30",
+    "13h00", "13h30", "14h00", "14h30", "15h00", "15h30",
+    "16h00", "16h30", "17h00", "17h30"
   ];
 
   const services = [
-    { name: "Haircut", duration: "60 min", price: "$45" },
-    { name: "Hair Color", duration: "120 min", price: "$85" },
-    { name: "Highlights", duration: "180 min", price: "$120" },
-    { name: "Blowout", duration: "45 min", price: "$35" },
-    { name: "Treatment", duration: "90 min", price: "$65" }
+    { name: "Coupe", duration: "60 min", price: "45€" },
+    { name: "Coloration", duration: "120 min", price: "85€" },
+    { name: "Mèches", duration: "180 min", price: "120€" },
+    { name: "Brushing", duration: "45 min", price: "35€" },
+    { name: "Soin", duration: "90 min", price: "65€" }
   ];
 
   const handleBooking = () => {
     if (!selectedDate || !selectedTime || !selectedService || !customerName || !customerEmail) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
+        title: "Informations Manquantes",
+        description: "Veuillez remplir tous les champs obligatoires.",
         variant: "destructive"
       });
       return;
     }
 
     toast({
-      title: "Booking Confirmed!",
-      description: `Your appointment at ${salon?.name} has been booked for ${selectedDate} at ${selectedTime}.`,
+      title: "Réservation Confirmée !",
+      description: `Votre rendez-vous chez ${salon?.name} a été réservé pour le ${selectedDate} à ${selectedTime}.`,
     });
 
     // Reset form
@@ -83,14 +83,14 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl">Book Appointment</DialogTitle>
+          <DialogTitle className="text-2xl">Réserver un Rendez-vous</DialogTitle>
           <DialogDescription>
-            Schedule your appointment at {salon.name}
+            Planifiez votre rendez-vous chez {salon.name}
           </DialogDescription>
         </DialogHeader>
 
         <div className="grid gap-6">
-          {/* Salon Info */}
+          {/* Informations du Salon */}
           <Card>
             <CardHeader className="pb-4">
               <CardTitle className="text-lg">{salon.name}</CardTitle>
@@ -104,9 +104,9 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
             </CardContent>
           </Card>
 
-          {/* Service Selection */}
+          {/* Sélection du Service */}
           <div className="space-y-4">
-            <Label className="text-base font-semibold">Select Service</Label>
+            <Label className="text-base font-semibold">Sélectionner un Service</Label>
             <div className="grid gap-3">
               {services.map((service) => (
                 <Card
@@ -132,7 +132,7 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
             </div>
           </div>
 
-          {/* Date & Time Selection */}
+          {/* Sélection Date & Heure */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="date">Date</Label>
@@ -145,10 +145,10 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
               />
             </div>
             <div className="space-y-2">
-              <Label>Time</Label>
+              <Label>Heure</Label>
               <Select value={selectedTime} onValueChange={setSelectedTime}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select time" />
+                  <SelectValue placeholder="Sélectionner une heure" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
                   {availableTimes.map((time) => (
@@ -161,17 +161,17 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
             </div>
           </div>
 
-          {/* Customer Information */}
+          {/* Informations Client */}
           <div className="space-y-4">
-            <Label className="text-base font-semibold">Your Information</Label>
+            <Label className="text-base font-semibold">Vos Informations</Label>
             <div className="grid gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name *</Label>
+                <Label htmlFor="name">Nom Complet *</Label>
                 <Input
                   id="name"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  placeholder="Enter your full name"
+                  placeholder="Entrez votre nom complet"
                 />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -182,60 +182,60 @@ const BookingModal = ({ salon, isOpen, onClose }: BookingModalProps) => {
                     type="email"
                     value={customerEmail}
                     onChange={(e) => setCustomerEmail(e.target.value)}
-                    placeholder="your.email@example.com"
+                    placeholder="votre.email@exemple.com"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
+                  <Label htmlFor="phone">Numéro de Téléphone</Label>
                   <Input
                     id="phone"
                     type="tel"
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
-                    placeholder="(555) 123-4567"
+                    placeholder="06 12 34 56 78"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Booking Summary */}
+          {/* Résumé de la Réservation */}
           {selectedService && selectedDate && selectedTime && (
             <Card className="bg-salon-cream border-primary/20">
               <CardHeader>
-                <CardTitle className="text-lg">Booking Summary</CardTitle>
+                <CardTitle className="text-lg">Résumé de la Réservation</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="flex justify-between">
-                  <span>Service:</span>
+                  <span>Service :</span>
                   <span className="font-medium">{selectedService}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Date:</span>
+                  <span>Date :</span>
                   <span className="font-medium">{selectedDate}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Time:</span>
+                  <span>Heure :</span>
                   <span className="font-medium">{selectedTime}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Salon:</span>
+                  <span>Salon :</span>
                   <span className="font-medium">{salon.name}</span>
                 </div>
               </CardContent>
             </Card>
           )}
 
-          {/* Action Buttons */}
+          {/* Boutons d'Action */}
           <div className="flex space-x-3">
             <Button variant="outline" onClick={onClose} className="flex-1">
-              Cancel
+              Annuler
             </Button>
             <Button 
               onClick={handleBooking} 
               className="flex-1 salon-gradient text-white hover:opacity-90"
             >
-              Confirm Booking
+              Confirmer la Réservation
             </Button>
           </div>
         </div>

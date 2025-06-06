@@ -16,10 +16,10 @@ const SearchFilters = () => {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const filterOptions = {
-    services: ["Haircut", "Hair Color", "Highlights", "Extensions", "Treatments", "Styling"],
+    services: ["Coupe", "Coloration", "Mèches", "Extensions", "Soins", "Coiffage"],
     priceRange: ["$", "$$", "$$$", "$$$$"],
-    rating: ["4+ Stars", "4.5+ Stars", "5 Stars"],
-    availability: ["Available Today", "Available This Week", "Available Anytime"]
+    rating: ["4+ Étoiles", "4,5+ Étoiles", "5 Étoiles"],
+    availability: ["Disponible Aujourd'hui", "Disponible Cette Semaine", "Disponible À Tout Moment"]
   };
 
   const toggleFilter = (filter: string) => {
@@ -38,7 +38,7 @@ const SearchFilters = () => {
     <div className="flex items-center space-x-4">
       {activeFilters.length > 0 && (
         <div className="flex items-center space-x-2">
-          <span className="text-sm text-muted-foreground">Filters:</span>
+          <span className="text-sm text-muted-foreground">Filtres :</span>
           <div className="flex flex-wrap gap-1">
             {activeFilters.map((filter) => (
               <Badge
@@ -52,7 +52,7 @@ const SearchFilters = () => {
             ))}
           </div>
           <Button variant="ghost" size="sm" onClick={clearFilters}>
-            Clear All
+            Effacer Tout
           </Button>
         </div>
       )}
@@ -61,12 +61,12 @@ const SearchFilters = () => {
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
             <Filter className="h-4 w-4 mr-2" />
-            Filters
+            Filtres
             <ChevronDown className="h-4 w-4 ml-2" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-64 bg-white border shadow-lg">
-          <DropdownMenuLabel>Filter Salons</DropdownMenuLabel>
+          <DropdownMenuLabel>Filtrer les Salons</DropdownMenuLabel>
           <DropdownMenuSeparator />
           
           <DropdownMenuLabel className="text-xs text-muted-foreground uppercase tracking-wide">
@@ -90,7 +90,7 @@ const SearchFilters = () => {
           <DropdownMenuSeparator />
           
           <DropdownMenuLabel className="text-xs text-muted-foreground uppercase tracking-wide">
-            Price Range
+            Gamme de Prix
           </DropdownMenuLabel>
           {filterOptions.priceRange.map((price) => (
             <DropdownMenuItem
@@ -110,7 +110,7 @@ const SearchFilters = () => {
           <DropdownMenuSeparator />
           
           <DropdownMenuLabel className="text-xs text-muted-foreground uppercase tracking-wide">
-            Rating
+            Note
           </DropdownMenuLabel>
           {filterOptions.rating.map((rating) => (
             <DropdownMenuItem
@@ -130,7 +130,7 @@ const SearchFilters = () => {
           <DropdownMenuSeparator />
           
           <DropdownMenuLabel className="text-xs text-muted-foreground uppercase tracking-wide">
-            Availability
+            Disponibilité
           </DropdownMenuLabel>
           {filterOptions.availability.map((availability) => (
             <DropdownMenuItem
